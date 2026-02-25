@@ -9,7 +9,7 @@ repo_url: https://github.com/GhostWriters/DockSTARTer
 copyright: Copyright &copy; 2023 GhostWriters
 
 theme:
-  name: material
+  name: modern
   features:
     - content.action.edit
     - content.code.copy
@@ -27,7 +27,7 @@ theme:
       primary: blue grey
       accent: indigo
       toggle:
-        icon: material/brightness-7
+        icon:  material/brightness-7
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
