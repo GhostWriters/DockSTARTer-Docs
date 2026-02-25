@@ -1,4 +1,4 @@
-name: Build and Deploy mkdocs
+name: Build and Deploy Documentation
 
 on:
   push:
@@ -10,8 +10,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  mkdocs:
-    name: Build and Deploy mkdocs
+  build_and_deploy:
+    name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -56,7 +56,7 @@ jobs:
           rm -rf templates-repo
 
       - name: Build documentation
-        run: mkdocs build > build.log 2>&1 || (cat build.log && exit 1)
+        run: zensical build > build.log 2>&1 || (cat build.log && exit 1)
 
       - name: Upload build log
         if: always()
@@ -67,4 +67,8 @@ jobs:
 
       - name: Deploy to GitHub Pages
         if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || github.event_name == 'repository_dispatch'
-        run: mkdocs gh-deploy --force
+        uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e # v4.0.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          force_orphan: true
