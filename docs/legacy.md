@@ -1,27 +1,27 @@
-# <!-- Home -->
+# Legacy DockSTARTer
 
-[![DockSTARTer2](assets/logo.png)](https://dockstarter.com)
+[![DockSTARTer](assets/logo.png)](https://dockstarter.com)
 
 [![Supporters on Open Collective](https://img.shields.io/opencollective/all/DockSTARTer.svg?style=flat-square&color=607D8B&logo=opencollective&logoColor=white)](#supporters)
 [![Discord chat](https://img.shields.io/discord/477959324183035936.svg?style=flat-square&color=607D8B&logo=discord&logoColor=white)](https://dockstarter.com/discord)
-[![GitHub contributors](https://img.shields.io/github/contributors/GhostWriters/DockSTARTer2.svg?style=flat-square&color=607D8B&logo=github&logoColor=white)](https://github.com/GhostWriters/DockSTARTer2/graphs/contributors)
-[![GitHub last commit main](https://img.shields.io/github/last-commit/GhostWriters/DockSTARTer2/main.svg?style=flat-square&color=607D8B&logo=github&logoColor=white&label=code%20committed)](https://github.com/GhostWriters/DockSTARTer2/commits/main)
-[![GitHub license](https://img.shields.io/github/license/GhostWriters/DockSTARTer2.svg?style=flat-square&color=607D8B&logo=github&logoColor=white)](https://github.com/GhostWriters/DockSTARTer2/blob/main/LICENSE)
-[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/GhostWriters/DockSTARTer2/tests.yml?style=flat-square&color=607D8B&logo=github&logoColor=white&branch=main)](https://github.com/GhostWriters/DockSTARTer2/actions?query=workflow%3ARun%20Tests+branch%3Amain)
+[![GitHub contributors](https://img.shields.io/github/contributors/GhostWriters/DockSTARTer.svg?style=flat-square&color=607D8B&logo=github&logoColor=white)](https://github.com/GhostWriters/DockSTARTer/graphs/contributors)
+[![GitHub last commit main](https://img.shields.io/github/last-commit/GhostWriters/DockSTARTer/main.svg?style=flat-square&color=607D8B&logo=github&logoColor=white&label=code%20committed)](https://github.com/GhostWriters/DockSTARTer/commits/main)
+[![GitHub license](https://img.shields.io/github/license/GhostWriters/DockSTARTer.svg?style=flat-square&color=607D8B&logo=github&logoColor=white)](https://github.com/GhostWriters/DockSTARTer/blob/main/LICENSE)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/GhostWriters/DockSTARTer/tests.yml?style=flat-square&color=607D8B&logo=github&logoColor=white&branch=main)](https://github.com/GhostWriters/DockSTARTer/actions?query=workflow%3ARun%20Tests+branch%3Amain)
 
-The main goal of DockSTARTer2 is to make it quick and easy to get up and running with Docker.
+The main goal of DockSTARTer is to make it quick and easy to get up and running with Docker.
 
-You may choose to rely on DockSTARTer2 for various changes to your Docker system or use DockSTARTer2 as a stepping stone and learn to do more advanced configurations.
+You may choose to rely on DockSTARTer for various changes to your Docker system or use DockSTARTer as a stepping stone and learn to do more advanced configurations.
 
-![Main Menu](assets/menu_main.png "Main Menu")
+![Main Menu](assets/legacy_menu_main.png "Main Menu")
 
-![App Select](assets/menu_app_select.png "App Select")
+![App Select](assets/legacy_menu_app_select.png "App Select")
 
-![Variable Editor](assets/menu_config_vars.png "Variable Editor")
+![Variable Select](assets/legacy_menu_config_vars.png "Variable Select")
 
-![Value Prompt](assets/menu_value_prompt.png "Value Prompt")
+![Value Prompt](assets/legacy_menu_value_prompt.png "Value Prompt")
 
-![Command Line Interface](assets/command_help.png "Command Line Interface")
+![Command Line Interface](assets/legacy_command_help.png "Command Line Interface")
 
 ## Getting Started
 
@@ -36,7 +36,7 @@ You may choose to rely on DockSTARTer2 for various changes to your Docker system
 
   ```bash
   sudo apk add curl git
-  sh -c "$(curl -fsSL https://getv2.dockstarter.com)"
+  bash -c "$(curl -fsSL https://get.dockstarter.com)"
   sudo reboot
   ```
 
@@ -44,7 +44,7 @@ You may choose to rely on DockSTARTer2 for various changes to your Docker system
 
   ```bash
   sudo apt-get install curl git
-  sh -c "$(curl -fsSL https://getv2.dockstarter.com)"
+  bash -c "$(curl -fsSL https://get.dockstarter.com)"
   sudo reboot
   ```
 
@@ -55,7 +55,7 @@ You may choose to rely on DockSTARTer2 for various changes to your Docker system
   sudo apt-get dist-upgrade
   sudo apt-get install curl git
   bash -c "$(curl -fsSL https://get.docker.com)"
-  sh -c "$(curl -fsSL https://getv2.dockstarter.com)"
+  bash -c "$(curl -fsSL https://get.dockstarter.com)"
   sudo reboot
   ```
 
@@ -65,7 +65,7 @@ You may choose to rely on DockSTARTer2 for various changes to your Docker system
 
   ```bash
   sudo dnf install curl git
-  sh -c "$(curl -fsSL https://getv2.dockstarter.com)"
+  bash -c "$(curl -fsSL https://get.dockstarter.com)"
   sudo reboot
   ```
 
@@ -73,7 +73,7 @@ You may choose to rely on DockSTARTer2 for various changes to your Docker system
 
   ```bash
   sudo pacman -Sy curl docker git
-  sh -c "$(curl -fsSL https://getv2.dockstarter.com)"
+  bash -c "$(curl -fsSL https://get.dockstarter.com)"
   sudo reboot
   ```
 
@@ -81,7 +81,7 @@ You may choose to rely on DockSTARTer2 for various changes to your Docker system
 
   ```bash
   sudo yum install curl git
-  sh -c "$(curl -fsSL https://getv2.dockstarter.com)"
+  bash -c "$(curl -fsSL https://get.dockstarter.com)"
   sudo reboot
   ```
 
@@ -106,7 +106,7 @@ You may choose to rely on DockSTARTer2 for various changes to your Docker system
 
   ```bash
   brew install bash curl git grep gnu-sed
-  sh -c "$(curl -fsSL https://getv2.dockstarter.com)"
+  bash -c "$(curl -fsSL https://get.dockstarter.com)"
   sudo reboot
   ```
 
@@ -143,7 +143,7 @@ sudo reboot
 ### Running DockSTARTer
 
 ```bash
-ds2
+ds
 ```
 
 To run DockSTARTer, use the command above. You should now see the main menu from the screenshots. Select `Configuration` and then `Full Setup`, and you will be guided through selecting apps and starting containers.
@@ -156,17 +156,17 @@ See our [documentation](https://dockstarter.com/introduction/) for more detailed
 
 Click the chat badge to join us on Discord for support!
 
-[Feature Request](https://github.com/GhostWriters/DockSTARTer2/issues/new?template=feature_request.md) | [Bug Report](https://github.com/GhostWriters/DockSTARTer2/issues/new?template=bug_report.md)
+[Feature Request](https://github.com/GhostWriters/DockSTARTer/issues/new?template=feature_request.md) | [Bug Report](https://github.com/GhostWriters/DockSTARTer/issues/new?template=bug_report.md)
 
 Additional information can be found on our [Support Page](https://dockstarter.com/basics/support/).
 
 ## Contributing
 
-Want to help develop DockSTARTer? Check out our [contributing guidelines](https://github.com/GhostWriters/DockSTARTer2/blob/main/.github/CONTRIBUTING.md) and [code of conduct](https://github.com/GhostWriters/DockSTARTer2/blob/main/.github/CODE_OF_CONDUCT.md).
+Want to help develop DockSTARTer? Check out our [contributing guidelines](https://github.com/GhostWriters/DockSTARTer/blob/main/.github/CONTRIBUTING.md) and [code of conduct](https://github.com/GhostWriters/DockSTARTer/blob/main/.github/CODE_OF_CONDUCT.md).
 
 ### Contributors
 
-[![GitHub contributors](https://img.shields.io/github/contributors/GhostWriters/DockSTARTer.svg?style=flat-square&color=607D8B)](https://github.com/GhostWriters/DockSTARTer2/graphs/contributors)
+[![GitHub contributors](https://img.shields.io/github/contributors/GhostWriters/DockSTARTer.svg?style=flat-square&color=607D8B)](https://github.com/GhostWriters/DockSTARTer/graphs/contributors)
 
 This project exists thanks to all the people who contribute.
 [![GitHub contributors](https://opencollective.com/DockSTARTer/contributors.svg?button=false)](https://GitHub.com/GhostWriters/DockSTARTer/graphs/contributors)

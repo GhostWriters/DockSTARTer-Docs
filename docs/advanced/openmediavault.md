@@ -1,6 +1,6 @@
 # OpenMediaVault (OMV)
 
-OpenMediaVault (OMV) requires some special setup in order to install DockSTARTer (DS). DS staff have tested and confirmed the following installation method on OMV version 5.5.
+OpenMediaVault (OMV) requires some special setup in order to install DockSTARTer or DockSTARTer2. Staff have tested and confirmed the following installation method on OMV version 5.5.
 
 If you are a Linux newbie, we _strongly discourage_ this approach because of all the issues that might arise with how OMV is built, and troubleshooting issues in OMV can be a pain. However, if you feel comfortable with Linux and want to continue down this route you will need to ensure the following:
 
@@ -24,10 +24,19 @@ We are now going to work on creating the directories for DS to use. You will nee
 
 The last directory should be where you store your user directories and you should not be using the system disk for that. If you do not know how to create a user and assign it a home directory; look up the OMV documentation as that is outside of the scope of this guide.
 
-Once the above requirements have been met, you will need to SSH to your OMV host using the account you created. First make sure your home directory was set up correctly by typing `cd ~`. This shouldn't return an error, if it does read over the OMV documentation in how to properly create a user with a home directory. If no error occurs, run the following commands:
+Once the above requirements have been met, you will need to SSH to your OMV host using the account you created. First make sure your home directory was set up correctly by typing `cd ~`. This shouldn't return an error, if it does read over the OMV documentation in how to properly create a user with a home directory. If no error occurs, run one of the following sets of commands:
 
-`sudo apt-get install curl git`
-`bash -c "$(curl -fsSL https://get.dockstarter.com)"`
-`sudo reboot`
+- Install DockSTARTer2:
+```bash
+sh -c "$(curl -sSL https://getv2.dockstarter.com)"
+sudo reboot
+```
 
-After the reboot is complete, SSH back to your host using your user account and run `ds`, type your password and select "Configuration". Select "Set Global Variables" and select "No" on the next prompt. The only thing we recommend changing is the `PGID` to `Use System 100`. On the next screen, please take note of the path that starts with `/srv/dev-disk-by-label-XXX`. You are going to want to remember this path to set your `appdata`, `storage`, `media` and `downloads` folder to that path, for instance: `/srv/dev-disk-by-label-DS/appdata/`, `/srv/dev-disk-by-label-DS/media/movies`, etc.
+- Install Legacy DockSTARTer:
+```bash
+sudo apt-get install curl git
+bash -c "$(curl -fsSL https://get.dockstarter.com)"
+sudo reboot
+```
+
+After the reboot is complete, SSH back to your host using your user account and run `ds2` (DockSTARTer2) or `ds` (Legacy DockSTARTer), type your password and select "Configuration". Select "Set Global Variables". The only thing we recommend changing is the `PGID` to `Use System 100`. On the next screen, please take note of the path that starts with `/srv/dev-disk-by-label-XXX`. You are going to want to remember this path to set your `appdata`, `storage`, `media` and `downloads` folder to that path, for instance: `/srv/dev-disk-by-label-DS/appdata/`, `/srv/dev-disk-by-label-DS/media/movies`, etc.

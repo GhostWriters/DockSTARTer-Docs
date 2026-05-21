@@ -1,6 +1,7 @@
 nav:
   - Home: README.md
   - introduction.md
+  - legacy.md
   - Basics:
       - basics/available-apps.md
       - basics/command-line-usage.md
