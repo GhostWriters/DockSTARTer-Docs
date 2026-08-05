@@ -45,6 +45,15 @@ Below are the commands for various systems to install curl and Docker:
 
 - APT Systems (Debian)
 
+  Use Docker's convenience script (this also installs Docker Compose):
+
+  ```bash
+  sudo apt-get install curl
+  bash -c "$(curl -fsSL https://get.docker.com)"
+  ```
+
+  or install manually (this doesn't install Docker Compose):
+
   ```bash
   sudo apt-get update
   sudo apt-get install ca-certificates curl
@@ -63,14 +72,7 @@ Below are the commands for various systems to install curl and Docker:
   sudo apt-get install docker-ce docker-ce-cli containerd.io
   ```
 
-  or use Docker's convenience script (this also installs Docker Compose, which the manual steps above don't):
-
-  ```bash
-  sudo apt-get install curl
-  bash -c "$(curl -fsSL https://get.docker.com)"
-  ```
-
-  > Raspbian requires a few extra commands, and isn't reliably covered by the apt repository above -- use Docker's convenience script instead
+  > Raspbian requires a few extra commands, and isn't reliably covered by the manual apt repository method above -- use Docker's convenience script instead
 
   ```bash
   sudo apt-get update
@@ -82,6 +84,15 @@ Below are the commands for various systems to install curl and Docker:
   > OpenMediaVault (OMV) requires [special instructions found here](https://dockstarter.com/advanced/openmediavault/)
 
 - APT Systems (Ubuntu)
+
+  Use Docker's convenience script (this also installs Docker Compose):
+
+  ```bash
+  sudo apt-get install curl
+  bash -c "$(curl -fsSL https://get.docker.com)"
+  ```
+
+  or install manually (this doesn't install Docker Compose):
 
   ```bash
   sudo apt-get update
@@ -101,27 +112,22 @@ Below are the commands for various systems to install curl and Docker:
   sudo apt-get install docker-ce docker-ce-cli containerd.io
   ```
 
-  or use Docker's convenience script (this also installs Docker Compose, which the manual steps above don't):
+- DNF Systems (Fedora)
+
+  Use Docker's convenience script (this also installs Docker Compose):
 
   ```bash
-  sudo apt-get install curl
+  sudo dnf install curl
   bash -c "$(curl -fsSL https://get.docker.com)"
   ```
 
-- DNF Systems (Fedora)
+  or install manually (this doesn't install Docker Compose):
 
   ```bash
   sudo dnf install curl
   sudo dnf config-manager addrepo --from-repofile https://download.docker.com/linux/fedora/docker-ce.repo
   sudo dnf install docker-ce docker-ce-cli containerd.io
   sudo systemctl enable --now docker
-  ```
-
-  or use Docker's convenience script (this also installs Docker Compose, which the manual steps above don't):
-
-  ```bash
-  sudo dnf install curl
-  bash -c "$(curl -fsSL https://get.docker.com)"
   ```
 
 - Pacman Systems (Arch, Manjaro, EndeavourOS, etc.)
@@ -133,18 +139,20 @@ Below are the commands for various systems to install curl and Docker:
 
 - DNF/YUM Systems (CentOS)
 
+  Use Docker's convenience script (this also installs Docker Compose):
+
+  ```bash
+  sudo yum install curl
+  bash -c "$(curl -fsSL https://get.docker.com)"
+  ```
+
+  or install manually (this doesn't install Docker Compose):
+
   ```bash
   sudo dnf -y install dnf-plugins-core curl
   sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
   sudo dnf install docker-ce docker-ce-cli containerd.io
   sudo systemctl enable --now docker
-  ```
-
-  or use Docker's convenience script (this also installs Docker Compose, which the manual steps above don't):
-
-  ```bash
-  sudo yum install curl
-  bash -c "$(curl -fsSL https://get.docker.com)"
   ```
 
 - MacOS Systems ([Homebrew](https://brew.sh))
