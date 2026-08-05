@@ -2,7 +2,6 @@
 
 ## What DockSTARTer Is
 
-- DockSTARTer is a script that installs Docker and other dependencies for you.
 - DockSTARTer comes with configurations to run various apps.
 - DockSTARTer can be operated through a friendly GUI of terminal menus.
 - DockSTARTer can be operated through commands for more advanced users who do not prefer the GUI.
@@ -26,7 +25,7 @@ You must be running a [Supported Platform](https://docs.docker.com/install/#supp
 - [Fedora](https://docs.docker.com/install/linux/docker-ce/fedora/#os-requirements)
 - [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/#os-requirements)
 
-Any operating system based on one of the above (ex: Raspbian) should also work as long as you can install the [officially supported script](https://get.docker.com/). DockSTARTer will attempt to perform this install for you if possible.
+Any operating system based on one of the above (ex: Raspbian) should also work as long as you can install Docker via the [officially supported script](https://get.docker.com/) or another method. See [Installing Docker](https://dockstarter.com/docker) for platform-specific instructions.
 
 ### Supported Hardware
 
