@@ -1,6 +1,7 @@
 nav:
   - Home: README.md
   - introduction.md
+  - docker.md
   - legacy.md
   - Basics:
       - basics/available-apps.md

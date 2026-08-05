@@ -29,11 +29,11 @@ You may choose to rely on DockSTARTer2 for various changes to your Docker system
 
 - You must be running a [supported platform](https://docs.docker.com/install/#supported-platforms) or an operating system based on a supported platform. Platforms named below will link to documentation listing compatible versions.
 - You must be logged in as a non-root user with sudo permissions.
-- The only dependencies are `sh` (present by default on all Linux and macOS systems) and Docker itself. `curl` or `wget` is needed only to fetch the install script.
+- The only dependencies is a working Docker install. `sh` and `curl` or `wget` are needed only to fetch and run the install script.
 
 ### One Time Setup (required)
 
-DS2 doesn't install Docker for you the way DS1 did (it will still offer to fix Docker group membership itself), so install `curl` and Docker for your system first:
+Below are the commands for various systems to install curl and Docker:
 
 - APK Systems (Alpine)
 
@@ -43,14 +43,34 @@ DS2 doesn't install Docker for you the way DS1 did (it will still offer to fix D
   sudo service docker start
   ```
 
-- APT Systems ([Debian](https://docs.docker.com/install/linux/docker-ce/debian/#os-requirements), [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/#os-requirements), etc)
+- APT Systems (Debian)
+
+  ```bash
+  sudo apt-get update
+  sudo apt-get install ca-certificates curl
+  sudo install -m 0755 -d /etc/apt/keyrings
+  sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+  sudo chmod a+r /etc/apt/keyrings/docker.asc
+  sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+  Types: deb
+  URIs: https://download.docker.com/linux/debian
+  Suites: $(. /etc/os-release && echo "$VERSION_CODENAME")
+  Components: stable
+  Architectures: $(dpkg --print-architecture)
+  Signed-By: /etc/apt/keyrings/docker.asc
+  EOF
+  sudo apt-get update
+  sudo apt-get install docker-ce docker-ce-cli containerd.io
+  ```
+
+  or use Docker's convenience script (this also installs Docker Compose, which the manual steps above don't):
 
   ```bash
   sudo apt-get install curl
   bash -c "$(curl -fsSL https://get.docker.com)"
   ```
 
-  > Raspbian requires a few extra commands
+  > Raspbian requires a few extra commands, and isn't reliably covered by the apt repository above -- use Docker's convenience script instead
 
   ```bash
   sudo apt-get update
@@ -61,7 +81,43 @@ DS2 doesn't install Docker for you the way DS1 did (it will still offer to fix D
 
   > OpenMediaVault (OMV) requires [special instructions found here](https://dockstarter.com/advanced/openmediavault/)
 
-- DNF Systems ([Fedora](https://docs.docker.com/install/linux/docker-ce/fedora/#os-requirements))
+- APT Systems (Ubuntu)
+
+  ```bash
+  sudo apt-get update
+  sudo apt-get install ca-certificates curl
+  sudo install -m 0755 -d /etc/apt/keyrings
+  sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+  sudo chmod a+r /etc/apt/keyrings/docker.asc
+  sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+  Types: deb
+  URIs: https://download.docker.com/linux/ubuntu
+  Suites: $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
+  Components: stable
+  Architectures: $(dpkg --print-architecture)
+  Signed-By: /etc/apt/keyrings/docker.asc
+  EOF
+  sudo apt-get update
+  sudo apt-get install docker-ce docker-ce-cli containerd.io
+  ```
+
+  or use Docker's convenience script (this also installs Docker Compose, which the manual steps above don't):
+
+  ```bash
+  sudo apt-get install curl
+  bash -c "$(curl -fsSL https://get.docker.com)"
+  ```
+
+- DNF Systems (Fedora)
+
+  ```bash
+  sudo dnf install curl
+  sudo dnf config-manager addrepo --from-repofile https://download.docker.com/linux/fedora/docker-ce.repo
+  sudo dnf install docker-ce docker-ce-cli containerd.io
+  sudo systemctl enable --now docker
+  ```
+
+  or use Docker's convenience script (this also installs Docker Compose, which the manual steps above don't):
 
   ```bash
   sudo dnf install curl
@@ -75,7 +131,16 @@ DS2 doesn't install Docker for you the way DS1 did (it will still offer to fix D
   sudo systemctl enable --now docker
   ```
 
-- YUM Systems ([CentOS](https://docs.docker.com/install/linux/docker-ce/centos/#os-requirements))
+- DNF/YUM Systems (CentOS)
+
+  ```bash
+  sudo dnf -y install dnf-plugins-core curl
+  sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+  sudo dnf install docker-ce docker-ce-cli containerd.io
+  sudo systemctl enable --now docker
+  ```
+
+  or use Docker's convenience script (this also installs Docker Compose, which the manual steps above don't):
 
   ```bash
   sudo yum install curl
