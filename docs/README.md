@@ -29,23 +29,25 @@ You may choose to rely on DockSTARTer2 for various changes to your Docker system
 
 - You must be running a [supported platform](https://docs.docker.com/install/#supported-platforms) or an operating system based on a supported platform. Platforms named below will link to documentation listing compatible versions.
 - You must be logged in as a non-root user with sudo permissions.
+- The only dependencies are `sh` (present by default on all Linux and macOS systems) and Docker itself. `curl` or `wget` is needed only to fetch the install script.
 
 ### One Time Setup (required)
+
+DS2 doesn't install Docker for you the way DS1 did (it will still offer to fix Docker group membership itself), so install `curl` and Docker for your system first:
 
 - APK Systems (Alpine)
 
   ```bash
-  sudo apk add curl git
-  sh -c "$(curl -fsSL https://getv2.dockstarter.com)"
-  sudo reboot
+  sudo apk add curl docker
+  sudo rc-update add docker boot
+  sudo service docker start
   ```
 
 - APT Systems ([Debian](https://docs.docker.com/install/linux/docker-ce/debian/#os-requirements), [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/#os-requirements), etc)
 
   ```bash
-  sudo apt-get install curl git
-  sh -c "$(curl -fsSL https://getv2.dockstarter.com)"
-  sudo reboot
+  sudo apt-get install curl
+  bash -c "$(curl -fsSL https://get.docker.com)"
   ```
 
   > Raspbian requires a few extra commands
@@ -53,10 +55,8 @@ You may choose to rely on DockSTARTer2 for various changes to your Docker system
   ```bash
   sudo apt-get update
   sudo apt-get dist-upgrade
-  sudo apt-get install curl git
+  sudo apt-get install curl
   bash -c "$(curl -fsSL https://get.docker.com)"
-  sh -c "$(curl -fsSL https://getv2.dockstarter.com)"
-  sudo reboot
   ```
 
   > OpenMediaVault (OMV) requires [special instructions found here](https://dockstarter.com/advanced/openmediavault/)
@@ -64,25 +64,22 @@ You may choose to rely on DockSTARTer2 for various changes to your Docker system
 - DNF Systems ([Fedora](https://docs.docker.com/install/linux/docker-ce/fedora/#os-requirements))
 
   ```bash
-  sudo dnf install curl git
-  sh -c "$(curl -fsSL https://getv2.dockstarter.com)"
-  sudo reboot
+  sudo dnf install curl
+  bash -c "$(curl -fsSL https://get.docker.com)"
   ```
 
 - Pacman Systems (Arch, Manjaro, EndeavourOS, etc.)
 
   ```bash
-  sudo pacman -Sy curl docker git
-  sh -c "$(curl -fsSL https://getv2.dockstarter.com)"
-  sudo reboot
+  sudo pacman -Sy curl docker
+  sudo systemctl enable --now docker
   ```
 
 - YUM Systems ([CentOS](https://docs.docker.com/install/linux/docker-ce/centos/#os-requirements))
 
   ```bash
-  sudo yum install curl git
-  sh -c "$(curl -fsSL https://getv2.dockstarter.com)"
-  sudo reboot
+  sudo yum install curl
+  bash -c "$(curl -fsSL https://get.docker.com)"
   ```
 
 - MacOS Systems ([Homebrew](https://brew.sh))
@@ -92,7 +89,6 @@ You may choose to rely on DockSTARTer2 for various changes to your Docker system
   brew upgrade --cask
   brew upgrade
   brew install --cask docker
-  brew install docker-compose
   ```
 
   or
@@ -101,44 +97,25 @@ You may choose to rely on DockSTARTer2 for various changes to your Docker system
   brew update
   brew upgrade --cask
   brew upgrade
-  brew install docker docker-compose
+  brew install docker
   ```
 
   ```bash
-  brew install bash curl git grep gnu-sed
-  sh -c "$(curl -fsSL https://getv2.dockstarter.com)"
-  sudo reboot
+  brew install curl
   ```
 
-  Additional Steps for MacOS:
-  - Run Docker at start up:
-    - In docker desktop (Docker.app) open settings and ensure "Start Docker Desktop when you sign in to your computer" is enabled in the General heading. This step is required to to start docker automatically after a restart and allow DockSTARTer to communicate with the docker daemon.
-  - Approve Docker keychain permissions:
-    - At least once after installing DockSTARTer open the terminal.app from the MacOS desktop and run the DockSTARTer command `ds -c`. A keychain access dialog will pop up. Type your MacOS login password into the dialog and click on "Always Allow".
-
-<details>
-  <summary>Alternate install (any system)</summary>
-
-The standard install above downloads the initial script using a method with some known risks. For those concerned with the security of the above method, here is an alternative:
+Then run the installer:
 
 ```bash
-## NOTE: Run the appropriate command for your distro
-sudo apt-get install curl git
-sudo dnf install curl git
-sudo pacman -Sy curl git
-sudo yum install curl git
-brew install bash curl git grep gnu-sed
-```
-
-Then
-
-```bash
-git clone https://github.com/GhostWriters/DockSTARTer "/home/${USER}/.dockstarter"
-bash /home/"${USER}"/.dockstarter/main.sh -vi
+sh -c "$(curl -fsSL https://getv2.dockstarter.com)"
 sudo reboot
 ```
 
-</details>
+- Additional Steps for MacOS:
+  - Run Docker at start up:
+    - In docker desktop (Docker.app) open settings and ensure "Start Docker Desktop when you sign in to your computer" is enabled in the General heading. This step is required to to start docker automatically after a restart and allow DockSTARTer to communicate with the docker daemon.
+  - Approve Docker keychain permissions:
+    - At least once after installing DockSTARTer2 open the terminal.app from the MacOS desktop and run the DockSTARTer2 command `ds2`. A keychain access dialog will pop up. Type your MacOS login password into the dialog and click on "Always Allow".
 
 ### Running DockSTARTer
 

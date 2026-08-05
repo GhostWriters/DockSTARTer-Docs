@@ -27,12 +27,14 @@ The last directory should be where you store your user directories and you shoul
 Once the above requirements have been met, you will need to SSH to your OMV host using the account you created. First make sure your home directory was set up correctly by typing `cd ~`. This shouldn't return an error, if it does read over the OMV documentation in how to properly create a user with a home directory. If no error occurs, run one of the following sets of commands:
 
 - Install DockSTARTer2:
+
 ```bash
 sh -c "$(curl -sSL https://getv2.dockstarter.com)"
 sudo reboot
 ```
 
 - Install Legacy DockSTARTer:
+
 ```bash
 sudo apt-get install curl git
 bash -c "$(curl -fsSL https://get.dockstarter.com)"
