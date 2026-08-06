@@ -7,8 +7,7 @@
 [![GitHub contributors](https://img.shields.io/github/contributors/GhostWriters/DockSTARTer2.svg?style=flat-square&color=607D8B&logo=github&logoColor=white)](https://github.com/GhostWriters/DockSTARTer2/graphs/contributors)
 [![GitHub last commit main](https://img.shields.io/github/last-commit/GhostWriters/DockSTARTer2/main.svg?style=flat-square&color=607D8B&logo=github&logoColor=white&label=code%20committed)](https://github.com/GhostWriters/DockSTARTer2/commits/main)
 [![GitHub license](https://img.shields.io/github/license/GhostWriters/DockSTARTer2.svg?style=flat-square&color=607D8B&logo=github&logoColor=white)](https://github.com/GhostWriters/DockSTARTer2/blob/main/LICENSE)
-[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/GhostWriters/DockSTARTer2/tests.yml?style=flat-square&color=607D8B&logo=github&logoColor=white&branch=main)](https://github.com/GhostWriters/DockSTARTer2/actions?query=workflow%3ARun%20Tests+branch%3Amain)
-
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/GhostWriters/DockSTARTer2/test.yml?style=flat-square&color=607D8B&logo=github&logoColor=white&branch=main)](https://github.com/GhostWriters/DockSTARTer2/actions?query=workflow%3ARun%20Tests+branch%3Amain)
 The main goal of DockSTARTer2 is to make it quick and easy to get up and running with Docker.
 
 You may choose to rely on DockSTARTer2 for various changes to your Docker system or use DockSTARTer2 as a stepping stone and learn to do more advanced configurations.
@@ -37,22 +36,23 @@ Below are the commands for various systems to install curl and Docker:
 
 - APK Systems (Alpine)
 
-  ```bash
-  sudo apk add curl docker
-  sudo rc-update add docker boot
-  sudo service docker start
-  ```
+``` bash
+sudo apk add curl docker
+sudo rc-update add docker boot
+sudo service docker start
+```
 
 - APT Systems ([Debian](https://docs.docker.com/install/linux/docker-ce/debian/#os-requirements))
 
-  Use Docker's convenience script (this also installs Docker Compose):
+Use Docker's convenience script (this also installs Docker Compose):
 
   ```bash
   sudo apt-get install curl
   bash -c "$(curl -fsSL https://get.docker.com)"
+
   ```
 
-  or install manually (this doesn't install Docker Compose):
+or install manually (this doesn't install Docker Compose):
 
   ```bash
   sudo apt-get update
@@ -81,18 +81,19 @@ Below are the commands for various systems to install curl and Docker:
   bash -c "$(curl -fsSL https://get.docker.com)"
   ```
 
-  > OpenMediaVault (OMV) requires [special instructions found here](https://dockstarter.com/advanced/openmediavault/)
+> OpenMediaVault (OMV) requires [special instructions found here](https://dockstarter.com/advanced/openmediavault/)
 
 - APT Systems ([Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/#os-requirements))
 
-  Use Docker's convenience script (this also installs Docker Compose):
+Use Docker's convenience script (this also installs Docker Compose):
 
   ```bash
   sudo apt-get install curl
   bash -c "$(curl -fsSL https://get.docker.com)"
+
   ```
 
-  or install manually (this doesn't install Docker Compose):
+or install manually (this doesn't install Docker Compose):
 
   ```bash
   sudo apt-get update
@@ -114,14 +115,15 @@ Below are the commands for various systems to install curl and Docker:
 
 - DNF Systems ([Fedora](https://docs.docker.com/install/linux/docker-ce/fedora/#os-requirements))
 
-  Use Docker's convenience script (this also installs Docker Compose):
+Use Docker's convenience script (this also installs Docker Compose):
 
   ```bash
   sudo dnf install curl
   bash -c "$(curl -fsSL https://get.docker.com)"
+
   ```
 
-  or install manually (this doesn't install Docker Compose):
+or install manually (this doesn't install Docker Compose):
 
   ```bash
   sudo dnf install curl
@@ -132,21 +134,22 @@ Below are the commands for various systems to install curl and Docker:
 
 - Pacman Systems (Arch, Manjaro, EndeavourOS, etc.)
 
-  ```bash
-  sudo pacman -Sy curl docker
-  sudo systemctl enable --now docker
-  ```
+``` bash
+sudo pacman -Sy curl docker
+sudo systemctl enable --now docker
+```
 
 - DNF/YUM Systems ([CentOS](https://docs.docker.com/install/linux/docker-ce/centos/#os-requirements))
 
-  Use Docker's convenience script (this also installs Docker Compose):
+Use Docker's convenience script (this also installs Docker Compose):
 
   ```bash
   sudo yum install curl
   bash -c "$(curl -fsSL https://get.docker.com)"
+
   ```
 
-  or install manually (this doesn't install Docker Compose):
+or install manually (this doesn't install Docker Compose):
 
   ```bash
   sudo dnf -y install dnf-plugins-core curl
@@ -157,20 +160,21 @@ Below are the commands for various systems to install curl and Docker:
 
 - MacOS Systems ([Homebrew](https://brew.sh))
 
-  ```bash
-  brew update
-  brew upgrade --cask
-  brew upgrade
-  brew install --cask docker
-  ```
+``` bash
+brew update
+brew upgrade --cask
+brew upgrade
+brew install --cask docker
+```
 
-  or
+or
 
   ```bash
   brew update
   brew upgrade --cask
   brew upgrade
   brew install docker
+
   ```
 
   ```bash
@@ -179,20 +183,20 @@ Below are the commands for various systems to install curl and Docker:
 
 Then run the installer:
 
-```bash
+``` bash
 sh -c "$(curl -fsSL https://getv2.dockstarter.com)"
 sudo reboot
 ```
 
-- Additional Steps for MacOS:
-  - Run Docker at start up:
+-   Additional Steps for MacOS:
+-   Run Docker at start up:
     - In docker desktop (Docker.app) open settings and ensure "Start Docker Desktop when you sign in to your computer" is enabled in the General heading. This step is required to to start docker automatically after a restart and allow DockSTARTer to communicate with the docker daemon.
-  - Approve Docker keychain permissions:
+-   Approve Docker keychain permissions:
     - At least once after installing DockSTARTer2 open the terminal.app from the MacOS desktop and run the DockSTARTer2 command `ds2`. A keychain access dialog will pop up. Type your MacOS login password into the dialog and click on "Always Allow".
 
 ### Running DockSTARTer
 
-```bash
+``` bash
 ds2
 ```
 
