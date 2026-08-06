@@ -1,23 +1,23 @@
 # <!-- Home -->
 
-[![DockSTARTer](docs/assets/logo.png)](https://dockstarter.com)
+[![DockSTARTer2](docs/assets/logo.png)](https://dockstarter.com)
 
 [![Supporters on Open Collective](https://img.shields.io/opencollective/all/DockSTARTer.svg?style=flat-square&color=607D8B&logo=opencollective&logoColor=white)](#supporters)
 [![Discord chat](https://img.shields.io/discord/477959324183035936.svg?style=flat-square&color=607D8B&logo=discord&logoColor=white)](https://dockstarter.com/discord)
-[![GitHub contributors](https://img.shields.io/github/contributors/GhostWriters/DockSTARTer.svg?style=flat-square&color=607D8B&logo=github&logoColor=white)](https://github.com/GhostWriters/DockSTARTer/graphs/contributors)
-[![GitHub last commit main](https://img.shields.io/github/last-commit/GhostWriters/DockSTARTer/main.svg?style=flat-square&color=607D8B&logo=github&logoColor=white&label=code%20committed)](https://github.com/GhostWriters/DockSTARTer/commits/main)
-[![GitHub license](https://img.shields.io/github/license/GhostWriters/DockSTARTer.svg?style=flat-square&color=607D8B&logo=github&logoColor=white)](https://github.com/GhostWriters/DockSTARTer/blob/main/LICENSE)
-[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/GhostWriters/DockSTARTer/tests.yml?style=flat-square&color=607D8B&logo=github&logoColor=white&branch=main)](https://github.com/GhostWriters/DockSTARTer/actions?query=workflow%3ARun%20Tests+branch%3Amain)
+[![GitHub contributors](https://img.shields.io/github/contributors/GhostWriters/DockSTARTer2.svg?style=flat-square&color=607D8B&logo=github&logoColor=white)](https://github.com/GhostWriters/DockSTARTer2/graphs/contributors)
+[![GitHub last commit main](https://img.shields.io/github/last-commit/GhostWriters/DockSTARTer2/main.svg?style=flat-square&color=607D8B&logo=github&logoColor=white&label=code%20committed)](https://github.com/GhostWriters/DockSTARTer2/commits/main)
+[![GitHub license](https://img.shields.io/github/license/GhostWriters/DockSTARTer2.svg?style=flat-square&color=607D8B&logo=github&logoColor=white)](https://github.com/GhostWriters/DockSTARTer2/blob/main/LICENSE)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/GhostWriters/DockSTARTer2/tests.yml?style=flat-square&color=607D8B&logo=github&logoColor=white&branch=main)](https://github.com/GhostWriters/DockSTARTer2/actions?query=workflow%3ARun%20Tests+branch%3Amain)
 
-The main goal of DockSTARTer is to make it quick and easy to get up and running with Docker.
+The main goal of DockSTARTer2 is to make it quick and easy to get up and running with Docker.
 
-You may choose to rely on DockSTARTer for various changes to your Docker system or use DockSTARTer as a stepping stone and learn to do more advanced configurations.
+You may choose to rely on DockSTARTer2 for various changes to your Docker system or use DockSTARTer2 as a stepping stone and learn to do more advanced configurations.
 
 ![Main Menu](docs/assets/menu_main.png "Main Menu")
 
 ![App Select](docs/assets/menu_app_select.png "App Select")
 
-![Variable Select](docs/assets/menu_config_vars.png "Variable Select")
+![Variable Editor](docs/assets/menu_config_vars.png "Variable Editor")
 
 ![Value Prompt](docs/assets/menu_value_prompt.png "Value Prompt")
 
@@ -29,60 +29,130 @@ You may choose to rely on DockSTARTer for various changes to your Docker system 
 
 - You must be running a [supported platform](https://docs.docker.com/install/#supported-platforms) or an operating system based on a supported platform. Platforms named below will link to documentation listing compatible versions.
 - You must be logged in as a non-root user with sudo permissions.
+- The only dependencies is a working Docker install. `sh` and `curl` or `wget` are needed only to fetch and run the install script.
 
 ### One Time Setup (required)
+
+Below are the commands for various systems to install curl and Docker:
 
 - APK Systems (Alpine)
 
   ```bash
-  sudo apk add curl git
-  bash -c "$(curl -fsSL https://get.dockstarter.com)"
-  sudo reboot
+  sudo apk add curl docker
+  sudo rc-update add docker boot
+  sudo service docker start
   ```
 
-- APT Systems ([Debian](https://docs.docker.com/install/linux/docker-ce/debian/#os-requirements), [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/#os-requirements), etc)
+- APT Systems ([Debian](https://docs.docker.com/install/linux/docker-ce/debian/#os-requirements))
+
+  Use Docker's convenience script (this also installs Docker Compose):
 
   ```bash
-  sudo apt-get install curl git
-  bash -c "$(curl -fsSL https://get.dockstarter.com)"
-  sudo reboot
+  sudo apt-get install curl
+  bash -c "$(curl -fsSL https://get.docker.com)"
   ```
 
-  > Raspbian requires a few extra commands
+  or install manually (this doesn't install Docker Compose):
+
+  ```bash
+  sudo apt-get update
+  sudo apt-get install ca-certificates curl
+  sudo install -m 0755 -d /etc/apt/keyrings
+  sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+  sudo chmod a+r /etc/apt/keyrings/docker.asc
+  sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+  Types: deb
+  URIs: https://download.docker.com/linux/debian
+  Suites: $(. /etc/os-release && echo "$VERSION_CODENAME")
+  Components: stable
+  Architectures: $(dpkg --print-architecture)
+  Signed-By: /etc/apt/keyrings/docker.asc
+  EOF
+  sudo apt-get update
+  sudo apt-get install docker-ce docker-ce-cli containerd.io
+  ```
+
+  > Raspbian requires a few extra commands, and isn't reliably covered by the manual apt repository method above -- use Docker's convenience script instead
 
   ```bash
   sudo apt-get update
   sudo apt-get dist-upgrade
-  sudo apt-get install curl git
+  sudo apt-get install curl
   bash -c "$(curl -fsSL https://get.docker.com)"
-  bash -c "$(curl -fsSL https://get.dockstarter.com)"
-  sudo reboot
   ```
 
   > OpenMediaVault (OMV) requires [special instructions found here](https://dockstarter.com/advanced/openmediavault/)
 
-- DNF Systems ([Fedora](https://docs.docker.com/install/linux/docker-ce/fedora/#os-requirements))
+- APT Systems ([Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/#os-requirements))
+
+  Use Docker's convenience script (this also installs Docker Compose):
 
   ```bash
-  sudo dnf install curl git
-  bash -c "$(curl -fsSL https://get.dockstarter.com)"
-  sudo reboot
+  sudo apt-get install curl
+  bash -c "$(curl -fsSL https://get.docker.com)"
+  ```
+
+  or install manually (this doesn't install Docker Compose):
+
+  ```bash
+  sudo apt-get update
+  sudo apt-get install ca-certificates curl
+  sudo install -m 0755 -d /etc/apt/keyrings
+  sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+  sudo chmod a+r /etc/apt/keyrings/docker.asc
+  sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+  Types: deb
+  URIs: https://download.docker.com/linux/ubuntu
+  Suites: $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
+  Components: stable
+  Architectures: $(dpkg --print-architecture)
+  Signed-By: /etc/apt/keyrings/docker.asc
+  EOF
+  sudo apt-get update
+  sudo apt-get install docker-ce docker-ce-cli containerd.io
+  ```
+
+- DNF Systems ([Fedora](https://docs.docker.com/install/linux/docker-ce/fedora/#os-requirements))
+
+  Use Docker's convenience script (this also installs Docker Compose):
+
+  ```bash
+  sudo dnf install curl
+  bash -c "$(curl -fsSL https://get.docker.com)"
+  ```
+
+  or install manually (this doesn't install Docker Compose):
+
+  ```bash
+  sudo dnf install curl
+  sudo dnf config-manager addrepo --from-repofile https://download.docker.com/linux/fedora/docker-ce.repo
+  sudo dnf install docker-ce docker-ce-cli containerd.io
+  sudo systemctl enable --now docker
   ```
 
 - Pacman Systems (Arch, Manjaro, EndeavourOS, etc.)
 
   ```bash
-  sudo pacman -Sy curl docker git
-  bash -c "$(curl -fsSL https://get.dockstarter.com)"
-  sudo reboot
+  sudo pacman -Sy curl docker
+  sudo systemctl enable --now docker
   ```
 
-- YUM Systems ([CentOS](https://docs.docker.com/install/linux/docker-ce/centos/#os-requirements))
+- DNF/YUM Systems ([CentOS](https://docs.docker.com/install/linux/docker-ce/centos/#os-requirements))
+
+  Use Docker's convenience script (this also installs Docker Compose):
 
   ```bash
-  sudo yum install curl git
-  bash -c "$(curl -fsSL https://get.dockstarter.com)"
-  sudo reboot
+  sudo yum install curl
+  bash -c "$(curl -fsSL https://get.docker.com)"
+  ```
+
+  or install manually (this doesn't install Docker Compose):
+
+  ```bash
+  sudo dnf -y install dnf-plugins-core curl
+  sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+  sudo dnf install docker-ce docker-ce-cli containerd.io
+  sudo systemctl enable --now docker
   ```
 
 - MacOS Systems ([Homebrew](https://brew.sh))
@@ -92,7 +162,6 @@ You may choose to rely on DockSTARTer for various changes to your Docker system 
   brew upgrade --cask
   brew upgrade
   brew install --cask docker
-  brew install docker-compose
   ```
 
   or
@@ -101,49 +170,30 @@ You may choose to rely on DockSTARTer for various changes to your Docker system 
   brew update
   brew upgrade --cask
   brew upgrade
-  brew install docker docker-compose
+  brew install docker
   ```
 
   ```bash
-  brew install bash curl git grep gnu-sed
-  bash -c "$(curl -fsSL https://get.dockstarter.com)"
-  sudo reboot
+  brew install curl
   ```
 
-  Additional Steps for MacOS:
-  - Run Docker at start up:
-    - In docker desktop (Docker.app) open settings and ensure "Start Docker Desktop when you sign in to your computer" is enabled in the General heading. This step is required to to start docker automatically after a restart and allow DockSTARTer to communicate with the docker daemon.
-  - Approve Docker keychain permissions:
-    - At least once after installing DockSTARTer open the terminal.app from the MacOS desktop and run the DockSTARTer command `ds -c`. A keychain access dialog will pop up. Type your MacOS login password into the dialog and click on "Always Allow".
-
-<details>
-  <summary>Alternate install (any system)</summary>
-
-The standard install above downloads the initial script using a method with some known risks. For those concerned with the security of the above method, here is an alternative:
+Then run the installer:
 
 ```bash
-## NOTE: Run the appropriate command for your distro
-sudo apt-get install curl git
-sudo dnf install curl git
-sudo pacman -Sy curl git
-sudo yum install curl git
-brew install bash curl git grep gnu-sed
-```
-
-Then
-
-```bash
-git clone https://github.com/GhostWriters/DockSTARTer "/home/${USER}/.dockstarter"
-bash /home/"${USER}"/.dockstarter/main.sh -vi
+sh -c "$(curl -fsSL https://getv2.dockstarter.com)"
 sudo reboot
 ```
 
-</details>
+- Additional Steps for MacOS:
+  - Run Docker at start up:
+    - In docker desktop (Docker.app) open settings and ensure "Start Docker Desktop when you sign in to your computer" is enabled in the General heading. This step is required to to start docker automatically after a restart and allow DockSTARTer to communicate with the docker daemon.
+  - Approve Docker keychain permissions:
+    - At least once after installing DockSTARTer2 open the terminal.app from the MacOS desktop and run the DockSTARTer2 command `ds2`. A keychain access dialog will pop up. Type your MacOS login password into the dialog and click on "Always Allow".
 
 ### Running DockSTARTer
 
 ```bash
-ds
+ds2
 ```
 
 To run DockSTARTer, use the command above. You should now see the main menu from the screenshots. Select `Configuration` and then `Full Setup`, and you will be guided through selecting apps and starting containers.
@@ -156,17 +206,17 @@ See our [documentation](https://dockstarter.com/introduction/) for more detailed
 
 Click the chat badge to join us on Discord for support!
 
-[Feature Request](https://github.com/GhostWriters/DockSTARTer/issues/new?template=feature_request.md) | [Bug Report](https://github.com/GhostWriters/DockSTARTer/issues/new?template=bug_report.md)
+[Feature Request](https://github.com/GhostWriters/DockSTARTer2/issues/new?template=feature_request.md) | [Bug Report](https://github.com/GhostWriters/DockSTARTer2/issues/new?template=bug_report.md)
 
 Additional information can be found on our [Support Page](https://dockstarter.com/basics/support/).
 
 ## Contributing
 
-Want to help develop DockSTARTer? Check out our [contributing guidelines](https://github.com/GhostWriters/DockSTARTer/blob/main/.github/CONTRIBUTING.md) and [code of conduct](https://github.com/GhostWriters/DockSTARTer/blob/main/.github/CODE_OF_CONDUCT.md).
+Want to help develop DockSTARTer? Check out our [contributing guidelines](https://github.com/GhostWriters/DockSTARTer2/blob/main/.github/CONTRIBUTING.md) and [code of conduct](https://github.com/GhostWriters/DockSTARTer2/blob/main/.github/CODE_OF_CONDUCT.md).
 
 ### Contributors
 
-[![GitHub contributors](https://img.shields.io/github/contributors/GhostWriters/DockSTARTer.svg?style=flat-square&color=607D8B)](https://github.com/GhostWriters/DockSTARTer/graphs/contributors)
+[![GitHub contributors](https://img.shields.io/github/contributors/GhostWriters/DockSTARTer.svg?style=flat-square&color=607D8B)](https://github.com/GhostWriters/DockSTARTer2/graphs/contributors)
 
 This project exists thanks to all the people who contribute.
 [![GitHub contributors](https://opencollective.com/DockSTARTer/contributors.svg?button=false)](https://GitHub.com/GhostWriters/DockSTARTer/graphs/contributors)
