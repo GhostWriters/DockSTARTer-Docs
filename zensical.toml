@@ -1,0 +1,120 @@
+[project]
+site_name = "DockSTARTer"
+site_url = "https://dockstarter.com"
+site_author = "GhostWriters"
+site_description = "DockSTARTer helps you get started with home server apps running in Docker."
+
+repo_name = "GhostWriters/DockSTARTer"
+repo_url = "https://github.com/GhostWriters/DockSTARTer"
+edit_uri = "edit/main/docs/"
+
+copyright = "Copyright &copy; 2023 GhostWriters"
+
+extra_javascript = [
+  "https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js",
+  "javascripts/tablesort.js",
+]
+
+nav = [
+  { "Home" = "README.md" },
+  "introduction.md",
+  "docker.md",
+  "legacy.md",
+  { "Basics" = [
+    "basics/available-apps.md",
+    "basics/command-line-usage.md",
+    "basics/env-var-info.md",
+    "basics/faq.md",
+    "basics/migration.md",
+    "basics/port-conflicts.md",
+    "basics/support.md",
+  ] },
+  { "Advanced" = [
+    "advanced/backups.md",
+    "advanced/domain-info.md",
+    "advanced/macvlan.md",
+    "advanced/openmediavault.md",
+    "advanced/smb-mounting.md",
+    "advanced/technical-info.md",
+    "advanced/uninstall.md",
+    "advanced/vpn-info.md",
+  ] },
+  { "Overrides" = [
+    "overrides/introduction.md",
+    "overrides/autoscan.md",
+    "overrides/bw_plex.md",
+    "overrides/conreq.md",
+    "overrides/dashmachine.md",
+    "overrides/fireflyiii.md",
+    "overrides/kitana.md",
+    "overrides/nginxproxymanager.md",
+    "overrides/overseerr.md",
+    "overrides/petio.md",
+    "overrides/plpp.md",
+    "overrides/requestrr.md",
+    "overrides/yacreader.md",
+  ] },
+]
+
+# extra.analytics / extra.status are mkdocs-material config keys carried over
+# from mkdocs.yml -- unverified whether zensical's bootstrap schema supports
+# either; not present (active or commented) in zensical's own bootstrap
+# template. Test after build; drop if zensical rejects or silently ignores
+# them.
+[project.extra.analytics]
+provider = "google"
+property = "G-QVNLHE95FS"
+
+[[project.extra.social]]
+icon = "fontawesome/brands/discord"
+link = "https://dockstarter.com/discord"
+
+[[project.extra.social]]
+icon = "fontawesome/brands/github"
+link = "https://github.com/GhostWriters/DockSTARTer"
+
+[project.theme]
+name = "material"
+language = "en"
+favicon = "assets/favicon.ico"
+logo = "assets/icon.png"
+features = [
+  "content.action.edit",
+  "content.code.copy",
+  "navigation.footer",
+  "navigation.instant",
+  "navigation.top",
+  "navigation.tracking",
+  "search.highlight",
+  "toc.follow",
+]
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+primary = "blue grey"
+accent = "indigo"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+primary = "blue grey"
+accent = "indigo"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to light mode"
+
+[project.markdown_extensions]
+admonition = {}
+attr_list = {}
+def_list = {}
+footnotes = {}
+md_in_html = {}
+tables = {}
+toc = { permalink = true }
+pymdownx.details = {}
+pymdownx.highlight = { anchor_linenums = true, line_spans = "__span", pygments_lang_class = true }
+pymdownx.inlinehilite = {}
+pymdownx.snippets = {}
+pymdownx.superfences = {}
