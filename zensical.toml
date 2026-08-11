@@ -39,6 +39,9 @@ nav = [
     "advanced/uninstall.md",
     "advanced/vpn-info.md",
   ] },
+  { "Applications" = [
+    "apps/*.md",
+  ] },
   { "Overrides" = [
     "overrides/introduction.md",
     "overrides/autoscan.md",
