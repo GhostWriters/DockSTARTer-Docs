@@ -11,52 +11,52 @@ edit_uri = "edit/main/docs/"
 copyright = "Copyright &copy; 2023 GhostWriters"
 
 extra_javascript = [
-  "https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js",
-  "javascripts/tablesort.js",
+	"https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js",
+	"javascripts/tablesort.js",
 ]
 
 nav = [
-  { "Home" = "README.md" },
-  "introduction.md",
-  "docker.md",
-  "legacy.md",
-  { "Basics" = [
-    "basics/available-apps.md",
-    "basics/command-line-usage.md",
-    "basics/env-var-info.md",
-    "basics/faq.md",
-    "basics/migration.md",
-    "basics/port-conflicts.md",
-    "basics/support.md",
-  ] },
-  { "Advanced" = [
-    "advanced/backups.md",
-    "advanced/domain-info.md",
-    "advanced/macvlan.md",
-    "advanced/openmediavault.md",
-    "advanced/smb-mounting.md",
-    "advanced/technical-info.md",
-    "advanced/uninstall.md",
-    "advanced/vpn-info.md",
-  ] },
-  { "Applications" = [
-    "apps/*.md",
-  ] },
-  { "Overrides" = [
-    "overrides/introduction.md",
-    "overrides/autoscan.md",
-    "overrides/bw_plex.md",
-    "overrides/conreq.md",
-    "overrides/dashmachine.md",
-    "overrides/fireflyiii.md",
-    "overrides/kitana.md",
-    "overrides/nginxproxymanager.md",
-    "overrides/overseerr.md",
-    "overrides/petio.md",
-    "overrides/plpp.md",
-    "overrides/requestrr.md",
-    "overrides/yacreader.md",
-  ] },
+	{ "Home" = "README.md" },
+	"introduction.md",
+	"docker.md",
+	"legacy.md",
+	{ "Basics" = [
+		"basics/available-apps.md",
+		"basics/command-line-usage.md",
+		"basics/env-var-info.md",
+		"basics/faq.md",
+		"basics/migration.md",
+		"basics/port-conflicts.md",
+		"basics/support.md",
+	] },
+	{ "Advanced" = [
+		"advanced/backups.md",
+		"advanced/domain-info.md",
+		"advanced/macvlan.md",
+		"advanced/openmediavault.md",
+		"advanced/smb-mounting.md",
+		"advanced/technical-info.md",
+		"advanced/uninstall.md",
+		"advanced/vpn-info.md",
+	] },
+	{ "Applications" = [
+		"apps/*.md",
+	] },
+	{ "Overrides" = [
+		"overrides/introduction.md",
+		"overrides/autoscan.md",
+		"overrides/bw_plex.md",
+		"overrides/conreq.md",
+		"overrides/dashmachine.md",
+		"overrides/fireflyiii.md",
+		"overrides/kitana.md",
+		"overrides/nginxproxymanager.md",
+		"overrides/overseerr.md",
+		"overrides/petio.md",
+		"overrides/plpp.md",
+		"overrides/requestrr.md",
+		"overrides/yacreader.md",
+	] },
 ]
 
 # extra.analytics / extra.status are mkdocs-material config keys carried over
@@ -82,14 +82,16 @@ language = "en"
 favicon = "assets/favicon.ico"
 logo = "assets/icon.png"
 features = [
-  "content.action.edit",
-  "content.code.copy",
-  "navigation.footer",
-  "navigation.instant",
-  "navigation.top",
-  "navigation.tracking",
-  "search.highlight",
-  "toc.follow",
+	"content.action.edit",
+	"content.code.copy",
+	"navigation.footer",
+	"navigation.instant",
+	"navigation.instant.prefetch",
+	"navigation.instant.progress",
+	"navigation.top",
+	"navigation.tracking",
+	"search.highlight",
+	"toc.follow",
 ]
 
 [[project.theme.palette]]
