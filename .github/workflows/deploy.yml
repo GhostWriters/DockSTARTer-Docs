@@ -20,6 +20,7 @@ jobs:
           fetch-depth: 0
           sparse-checkout: |
             docs
+            .github
 
       - name: Setup python
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
@@ -54,6 +55,9 @@ jobs:
           mkdir -p docs/apps
           cp -r templates-repo/docs/apps/* docs/apps/
           rm -rf templates-repo
+
+      - name: Inject Apps Navigation
+        run: python .github/scripts/inject_apps_nav.py
 
       - name: Build documentation
         run: zensical build > build.log 2>&1 || (cat build.log && exit 1)
