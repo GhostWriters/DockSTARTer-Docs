@@ -8,9 +8,9 @@ Click the chat badge to join us on Discord for support!
 
 Also check out our subreddit, [/r/DockSTARTer](https://www.reddit.com/r/DockSTARTer/)
 
-[Submit a Feature Request](https://github.com/GhostWriters/DockSTARTer/issues/new?template=feature_request.md)
+[Submit a Feature Request](https://github.com/GhostWriters/DockSTARTer2/issues/new?template=feature-request.md)
 
-[Submit a Bug Report](https://github.com/GhostWriters/DockSTARTer/issues/new?template=bug_report.md)
+[Submit a Bug Report](https://github.com/GhostWriters/DockSTARTer2/issues/new?template=bug_report.md)
 
 ## External Information
 
