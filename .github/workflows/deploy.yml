@@ -48,12 +48,17 @@ jobs:
         with:
           repository: GhostWriters/DockSTARTer-Templates
           path: templates-repo
-          sparse-checkout: docs/apps
+          sparse-checkout: |
+            docs/apps
+            .apps
 
       - name: Prepare Apps Documentation
         run: |
           mkdir -p docs/apps
-          cp -r templates-repo/docs/apps/* docs/apps/
+          # App docs co-located with each app's own template files.
+          find templates-repo/.apps -mindepth 2 -maxdepth 2 -name '*.md' -exec cp {} docs/apps/ \;
+          # Orphaned docs with no matching .apps/ folder (e.g. removed/renamed apps).
+          cp templates-repo/docs/apps/*.md docs/apps/ 2>/dev/null || true
           rm -rf templates-repo
 
       - name: Inject Apps Navigation
