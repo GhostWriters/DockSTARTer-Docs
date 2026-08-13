@@ -60,6 +60,11 @@ jobs:
           # named READMEs don't collide once flattened into docs/apps/.
           for appdir in templates-repo/.apps/*/; do
             appname="$(basename "${appdir}")"
+            # Skip non-alphanumeric folder names (e.g. legacy duplicates like
+            # minecraft_bedrock_server, superseded by minecraftbedrockserver).
+            case "${appname}" in
+              *[!a-zA-Z0-9]*) continue ;;
+            esac
             if [ -f "${appdir}README.md" ]; then
               cp "${appdir}README.md" "docs/apps/${appname}.md"
             fi
