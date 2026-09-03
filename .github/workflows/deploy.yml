@@ -73,9 +73,6 @@ jobs:
           cp templates-repo/docs/apps/*.md docs/apps/ 2>/dev/null || true
           rm -rf templates-repo
 
-      - name: Inject Apps Navigation
-        run: python .github/scripts/inject_apps_nav.py
-
       - name: Build documentation
         run: zensical build > build.log 2>&1 || (cat build.log && exit 1)
 

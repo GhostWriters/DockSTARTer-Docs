@@ -15,49 +15,24 @@ extra_javascript = [
 	"javascripts/tablesort.js",
 ]
 
-nav = [
-	{ "Home" = "README.md" },
-	"introduction.md",
-	"docker.md",
-	"legacy.md",
-	{ "Basics" = [
-		"basics/available-apps.md",
-		"basics/command-line-usage.md",
-		"basics/env-var-info.md",
-		"basics/faq.md",
-		"basics/migration.md",
-		"basics/port-conflicts.md",
-		"basics/support.md",
-	] },
-	{ "Advanced" = [
-		"advanced/backups.md",
-		"advanced/domain-info.md",
-		"advanced/macvlan.md",
-		"advanced/openmediavault.md",
-		"advanced/smb-mounting.md",
-		"advanced/technical-info.md",
-		"advanced/uninstall.md",
-		"advanced/vpn-info.md",
-	] },
-	{ "Applications" = [
-		"apps/*.md",
-	] },
-	{ "Overrides" = [
-		"overrides/introduction.md",
-		"overrides/autoscan.md",
-		"overrides/bw_plex.md",
-		"overrides/conreq.md",
-		"overrides/dashmachine.md",
-		"overrides/fireflyiii.md",
-		"overrides/kitana.md",
-		"overrides/nginxproxymanager.md",
-		"overrides/overseerr.md",
-		"overrides/petio.md",
-		"overrides/plpp.md",
-		"overrides/requestrr.md",
-		"overrides/yacreader.md",
-	] },
-]
+# Navigation structure and ordering now come from docs/.nav.yml (and a
+# .nav.yml per subfolder) via the awesome-nav plugin below, instead of a
+# hardcoded array here -- this also gives native glob support for
+# apps/*.md, replacing the old inject_apps_nav.py CI workaround.
+[project.plugins.awesome-nav]
+
+# fireflyiii/kitana/overseerr/petio/requestrr's override docs were merged
+# into their app docs; discord.md and advanced/overrides.md are legacy
+# bookmarked paths. All five used to be `template: redirect.html` stub
+# pages; the redirects plugin now generates those redirect pages itself.
+[project.plugins.redirects]
+redirect_maps."discord.md" = "https://discord.gg/xR3cyUb"
+redirect_maps."advanced/overrides.md" = "overrides/introduction.md"
+redirect_maps."overrides/fireflyiii.md" = "apps/fireflyiii.md"
+redirect_maps."overrides/kitana.md" = "apps/kitana.md"
+redirect_maps."overrides/overseerr.md" = "apps/overseerr.md"
+redirect_maps."overrides/petio.md" = "apps/petio.md"
+redirect_maps."overrides/requestrr.md" = "apps/requestrr.md"
 
 # extra.analytics / extra.status are mkdocs-material config keys carried over
 # from mkdocs.yml -- unverified whether zensical's bootstrap schema supports
