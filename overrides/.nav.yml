@@ -1,0 +1,14 @@
+nav:
+  - introduction.md
+  - autoscan.md
+  - bw_plex.md
+  - conreq.md
+  - dashmachine.md
+  - Fireflyiii: /apps/fireflyiii/
+  - Kitana: /apps/kitana/
+  - nginxproxymanager.md
+  - Overseerr: /apps/overseerr/
+  - Petio: /apps/petio/
+  - plpp.md
+  - Requestrr: /apps/requestrr/
+  - yacreader.md
