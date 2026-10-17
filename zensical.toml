@@ -53,6 +53,7 @@ link = "https://github.com/GhostWriters/DockSTARTer2"
 
 [project.theme]
 name = "material"
+custom_dir = "theme"
 language = "en"
 favicon = "assets/favicon.ico"
 logo = "assets/icon.png"
