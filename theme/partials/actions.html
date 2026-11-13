@@ -1,8 +1,8 @@
 {#-
-  Copy of zensical 0.0.71's partials/actions.html. The edit and view
-  buttons use the page's edit_url front matter when set, so pages copied
-  in from DockSTARTer-Templates link to their real source. Re-check
-  against zensical's own copy when updating zensical.
+  Copy of zensical-ui 0.0.42's partials/actions.html (zensical 0.1.1).
+  The edit and view buttons use the page's edit_url front matter when
+  set, so pages copied in from DockSTARTer-Templates link to their real
+  source. Re-check against zensical-ui's own copy when updating zensical.
 -#}
 {% if "content.action.copy" in features and page.markdown_url %}
   <button type="button" title="{{ lang.t('action.copy') }}" aria-label="{{ lang.t('action.copy') }}" class="md-content__button md-icon" data-md-copy-url="{{ page.markdown_url | url }}">
