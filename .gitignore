@@ -62,3 +62,4 @@
 
 # Local virtual environment
 /venv/
+/docs/apps/.nav.yml
