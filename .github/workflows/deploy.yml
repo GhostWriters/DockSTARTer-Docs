@@ -45,18 +45,33 @@ jobs:
       - name: Install dependencies
         run: pip install -r docs/requirements.txt
 
+      - name: Find latest Templates release
+        id: templates
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Releases cut from other branches carry a -branch suffix; DS2 follows
+          # the main ones, so the site does too.
+          tag="$(gh release list --repo GhostWriters/DockSTARTer-Templates --limit 50 \
+            --json tagName --jq '[.[] | select(.tagName | test("^v[0-9.]+$"))][0].tagName')"
+          [[ -n ${tag} ]] || { echo "No Templates release found" >&2; exit 1; }
+          echo "tag=${tag}" >> "$GITHUB_OUTPUT"
+
       - name: Checkout Templates
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           repository: GhostWriters/DockSTARTer-Templates
+          ref: ${{ steps.templates.outputs.tag }}
           path: templates-repo
           sparse-checkout: |
             docs/apps
             .apps
 
       - name: Prepare Documentation
+        env:
+          TEMPLATES_TAG: ${{ steps.templates.outputs.tag }}
         run: |
-          bash scripts/prepare_docs.sh templates-repo
+          bash scripts/prepare_docs.sh templates-repo "${TEMPLATES_TAG}"
           rm -rf templates-repo
 
       - name: Build documentation
