@@ -5,8 +5,11 @@ set -Eeuo pipefail
 #   docs/README.md   the home page, from the repo-root README.md
 #   docs/apps/*.md   app pages, from a DockSTARTer-Templates checkout
 #
-# Usage: scripts/prepare_docs.sh [templates-dir]
-# Without templates-dir only the home page is generated.
+# Usage: scripts/prepare_docs.sh [templates-dir [templates-ref]]
+# Without templates-dir only the home page is generated. templates-ref is the
+# release tag templates-dir is checked out at: each app page then ends with a
+# note linking its source at that tag. Edit buttons always open main, as GitHub
+# only edits branches.
 
 docs_edit="https://github.com/GhostWriters/DockSTARTer-Docs/edit/main"
 templates_edit="https://github.com/GhostWriters/DockSTARTer-Templates/edit/main"
@@ -33,6 +36,16 @@ copy_doc() {
 }
 
 templates="${1:+$(cd "$1" && pwd)}"
+templates_ref="${2-}"
+
+# note_release <page> <path-in-templates>: ends an app page with a link to its
+# source at the release tag its text comes from; nothing without a ref.
+note_release() {
+	[[ -n ${templates_ref} ]] || return 0
+	printf '\n*From DockSTARTer-Templates [%s](https://github.com/GhostWriters/DockSTARTer-Templates/blob/%s/%s).*\n' \
+		"${templates_ref}" "${templates_ref}" "$2" >> "$1"
+}
+
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 
 # The root README links its images as docs/assets/... so they show on GitHub
@@ -56,6 +69,7 @@ for appdir in "${templates}"/.apps/*/; do
 	if [[ -f "${appdir}README.md" ]]; then
 		copy_doc "${appdir}README.md" "docs/apps/${appname}.md" \
 			"${templates_edit}/.apps/${appname}/README.md"
+		note_release "docs/apps/${appname}.md" ".apps/${appname}/README.md"
 	fi
 done
 # Orphaned docs with no matching .apps/ folder (e.g. removed/renamed apps).
@@ -63,4 +77,5 @@ for doc in "${templates}"/docs/apps/*.md; do
 	[[ -f ${doc} ]] || continue
 	copy_doc "${doc}" "docs/apps/$(basename "${doc}")" \
 		"${templates_edit}/docs/apps/$(basename "${doc}")"
+	note_release "docs/apps/$(basename "${doc}")" "docs/apps/$(basename "${doc}")"
 done
